@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @dog.name %>
-</p>
+</h1>
 
 <p>
   <strong>Age:</strong>
@@ -20,5 +19,9 @@
   <%= @dog.description %>
 </p>
 
-<%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+<div class="btn btn-primary text-white">
+  <%= link_to 'Edit', edit_dog_path(@dog), :class => "btn text-white" %>
+</div>
+<div class="btn btn-primary text-white">
+  <%= link_to 'Back', dogs_path, :class => "btn text-white" %>
+</div>

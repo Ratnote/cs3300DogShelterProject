@@ -2,5 +2,12 @@
 
 <%= render 'form', dog: @dog %>
 
-<%= link_to 'Show', @dog %> |
-<%= link_to 'Back', dogs_path %>
+<br>
+
+<div class="btn btn-primary text-white">
+    <%= link_to 'Show', @dog, :class => "btn text-white" %>
+</div>
+
+<div class="btn btn-primary text-white">
+    <%= link_to 'Back', dogs_path, :class => "btn text-white" %>
+</div>
