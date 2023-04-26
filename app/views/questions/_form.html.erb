@@ -1,0 +1,32 @@
+<%= form_with(model: question) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Reply Email (required)" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Subject (required)" %>
+    <%= form.text_field :subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Message (required)" %>
+    <%= form.text_area :message %>
+  </div>
+
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    Send Message
+  <% end %>
+<% end %>
