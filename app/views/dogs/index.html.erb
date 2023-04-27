@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 <div class="container-fluid p-1 bg-primary text-white text-center">
   <ul class="nav">
-    <li class="nav-item">
-      <%= link_to 'Add a Dog', new_dog_path, :class => "btn text-white" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Contact the Shelter', new_question_path, :class => "btn text-white" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'View Messages', questions_path, :class => "btn text-white" %>
-    </li>
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Add a Dog', new_dog_path, :class => "btn text-white" %>
+      </li>
+    <% end %>
+    <% if ! user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Contact the Shelter', new_question_path, :class => "btn text-white" %>
+      </li>
+    <% end %>
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'View Messages', questions_path, :class => "btn text-white" %>
+      </li>
+    <% end %>
   </ul>
 </div>
 
@@ -27,12 +33,16 @@
         <div class="btn btn-primary text-white">
           <%= link_to 'Show', dog, :class => "btn text-white" %>
         </div>
-        <div class="btn btn-primary text-white">
-          <%= link_to 'Edit', edit_dog_path(dog), :class => "btn text-white" %>
-        </div>
-        <div class="btn btn-primary text-white">
-          <%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn text-white" %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="btn btn-primary text-white">
+            <%= link_to 'Edit', edit_dog_path(dog), :class => "btn text-white" %>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="btn btn-primary text-white">
+            <%= link_to 'Remove', dog, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn text-white" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -1,5 +1,6 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy]
 
   # GET /dogs or /dogs.json
   def index
